@@ -41,4 +41,33 @@ public function soma($num1, $num2)
     return $soma;
     }
 
+    public function sub($num1, $num2) {
+        $sub = $num1 - $num2;
+
+        logger()->debug('Sub feita', compact('num1', 'num2', 'sub'));
+
+        return $sub;
+    }
+
+    public function div($num1, $num2) {
+        if ($num2 == 0) {
+            logger()->error('Divisor zero!');
+
+            abort(404);
+        } else {
+            $div = $num1 / $num2;
+
+            logger()->info('Div feita');
+
+            return $div;
+        }
+    }
+
+    public function mult($num1, $num2) {
+        if ($num1 < 0 || $num2 < 0) {
+            logger()->warning('Negativo');
+        }
+
+        return $num1 * $num2;
+    }
 }
